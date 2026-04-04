@@ -1,0 +1,49 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+#sankey-chart {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.node rect {
+    fill-opacity: .9;
+    shape-rendering: crispEdges;
+    stroke: #555;
+    stroke-width: 1px;
+}
+
+.node text {
+    pointer-events: none;
+    text-shadow: 0 1px 0 #fff;
+}
+
+.link {
+    fill: none;
+    stroke-opacity: .4;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    pointer-events: none; /* So the tooltip doesn't interfere with mouse events */
+    opacity: 0;
+    transition: opacity 0.2s;
+}

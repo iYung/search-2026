@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Define drag behavior
     function dragmove(event, d) {
-        // Get the new Y position, considering the offset, constrained to the SVG boundaries
-        const newY = Math.max(0, Math.min(height - (d.y1 - d.y0), event.y - d.dragOffsetY));
+        // Get the new Y position, constrained to the SVG boundaries
+        const newY = Math.max(0, Math.min(height - (d.y1 - d.y0), event.y));
 
         // Update only the node's Y position
         d.y0 = newY;
@@ -113,11 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .attr("transform", d => `translate(${d.x0},${d.y0})`)
         .call(d3.drag()
             .subject(d => d)
-            .on("start", function(event, d) {
-                this.parentNode.appendChild(this);
-                // Store the offset between the mouse's Y and the node's top edge to prevent jitter
-                d.dragOffsetY = event.y - d.y0;
-            })
+            .on("start", function() { this.parentNode.appendChild(this); })
             .on("drag", dragmove)
         );
 
